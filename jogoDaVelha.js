@@ -1,7 +1,7 @@
 celulas = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-const IA = "O";
-const HUMANO = "X";
+const IA = "X";
+const HUMANO = "O";
 
 // faz a jogada do HUMANO -> verifica condicao de vitoria -> chama a jogada do computador
 const onClick = (id) => {
