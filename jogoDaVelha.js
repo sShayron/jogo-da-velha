@@ -9,12 +9,12 @@ const onClick = (id) => {
   if ([IA, HUMANO].includes(celulas[id - 1])) {
     return;
   }
-  if (vence(celulas, HUMANO) == false && vence(celulas, IA) == false) {
-    document.getElementById(id).innerHTML = IA;
+  if (!vence(celulas, HUMANO) && !vence(celulas, IA)) {
+    document.getElementById(id).innerHTML = HUMANO;
     document.getElementById(id).style.backgroundColor = "#9da6f7";
-    celulas.splice(id - 1, 1, IA);
+    celulas.splice(id - 1, 1, HUMANO);
 
-    if (vence(celulas, IA) == true) {
+    if (vence(celulas, HUMANO)) {
       document.getElementById("winText").innerHTML = "Você venceu!";
     } else {
       var vazios = celulasVazias(celulas);
@@ -29,13 +29,13 @@ const onClick = (id) => {
 
 // joga automatico e verifica se venceu
 const autoPlay = () => {
-  var melhorJogada = minimax(celulas, HUMANO);
-  document.getElementById(melhorJogada.index + 1).innerHTML = HUMANO;
+  var melhorJogada = minimax(celulas, IA);
+  document.getElementById(melhorJogada.index + 1).innerHTML = IA;
   document.getElementById(melhorJogada.index + 1).style.backgroundColor =
     "#ffe887";
-  celulas.splice(melhorJogada.index, 1, HUMANO);
+  celulas.splice(melhorJogada.index, 1, IA);
 
-  if (vence(celulas, HUMANO) == true) {
+  if (vence(celulas, IA)) {
     document.getElementById("winText").innerHTML = "IA venceu!";
   }
 };
